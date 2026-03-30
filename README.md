@@ -1,6 +1,6 @@
 # terraform-s3-cloudfront-site
 
-Deploy a static website on AWS with S3 + CloudFront CDN in one `terraform apply`. Supports custom domains, SSL, SPA routing, and global edge caching.
+Deploy a static website on AWS with S3 + CloudFront CDN in one `terraform apply`. Supports custom domains, SSL, SPA routing, and global edge caching. Fixed some version issues
 
 ## Features
 
@@ -76,30 +76,30 @@ aws cloudfront create-invalidation \
 
 ## Inputs
 
-| Name | Description | Default |
-|------|-------------|---------|
-| `bucket_name` | S3 bucket name (globally unique) | required |
-| `domain_name` | Custom domain | `""` |
-| `route53_zone_id` | Route53 zone ID for DNS | `""` |
-| `is_spa` | SPA mode (route 404 → index.html) | `false` |
-| `price_class` | CloudFront pricing | `PriceClass_100` |
-| `enable_versioning` | S3 versioning | `true` |
+| Name                  | Description                        | Default            |
+| --------------------- | ---------------------------------- | ------------------ |
+| `bucket_name`       | S3 bucket name (globally unique)   | required           |
+| `domain_name`       | Custom domain                      | `""`             |
+| `route53_zone_id`   | Route53 zone ID for DNS            | `""`             |
+| `is_spa`            | SPA mode (route 404 → index.html) | `false`          |
+| `price_class`       | CloudFront pricing                 | `PriceClass_100` |
+| `enable_versioning` | S3 versioning                      | `true`           |
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| `website_url` | Your site URL |
+| Name                           | Description            |
+| ------------------------------ | ---------------------- |
+| `website_url`                | Your site URL          |
 | `cloudfront_distribution_id` | For cache invalidation |
-| `bucket_name` | For file uploads |
+| `bucket_name`                | For file uploads       |
 
 ## Price Class Guide
 
-| Class | Regions | Cost |
-|-------|---------|------|
-| `PriceClass_100` | US, Canada, Europe | Cheapest |
-| `PriceClass_200` | + Asia, Middle East, Africa | Medium |
-| `PriceClass_All` | All edge locations | Most expensive |
+| Class              | Regions                     | Cost           |
+| ------------------ | --------------------------- | -------------- |
+| `PriceClass_100` | US, Canada, Europe          | Cheapest       |
+| `PriceClass_200` | + Asia, Middle East, Africa | Medium         |
+| `PriceClass_All` | All edge locations          | Most expensive |
 
 ## License
 
